@@ -1,20 +1,13 @@
-// Импортируем всё необходимое.
-// Или можно не импортировать,
-// а передавать все нужные объекты прямо из run.js при инициализации new Game().
-
 const Hero = require('./Hero');
 const Enemy = require('./Enemy');
 const Boomerang = require('./Boomerang');
 const View = require('./View');
 const keyboard = require('./keyboard');
 
-// Основной класс игры.
-// Тут будут все настройки, проверки, запуск.
-
 class Game {
   constructor({ trackLength }) {
     this.trackLength = trackLength;
-    this.hero = new Hero({ boomerang: new Boomerang() }); // Герою можно аргументом передать бумеранг.
+    this.hero = new Hero({ boomerang: new Boomerang() });
     this.enemy = new Enemy();
     this.view = new View();
     this.track = [];
@@ -22,17 +15,13 @@ class Game {
   }
 
   regenerateTrack() {
-    // Сборка всего необходимого (герой, враг(и), оружие)
-    // в единую структуру данных
-    this.track = new Array(this.trackLength).fill(' '); // 88 массивов
+    this.track = new Array(this.trackLength).fill(' ');
     this.track[this.hero.position] = this.hero.skin;
     this.track[this.enemy.position] = this.enemy.skin;
     this.track[this.hero.boomerang.position] = this.hero.boomerang.skin;
-    // Здесь сделать врага и героя
   }
 
   check() {
-
     if (this.hero.boomerang.position === this.trackLength - 1) {
       this.hero.boomerang.position = undefined;
       this.hero.boomerang.isReturning = false;
@@ -40,16 +29,18 @@ class Game {
 
     if (this.hero.position === this.enemy.position) {
       this.hero.die();
+      this.hero.showStats();
+      process.exit();
     }
 
     if (this.hero.boomerang.position === this.enemy.position) {
       this.enemy.die();
       this.enemy = new Enemy();
-      console.log('Enemy is dead!');
+
       this.hero.boomerang.isReturning = true;
       this.hero.enemyKilled();
     }
-        if(this.hero.position < this.enemy.position){
+    if (this.hero.position < this.enemy.position) {
       this.enemy.moveLeft();
     }
 
@@ -73,9 +64,6 @@ class Game {
     ) {
       this.hero.boomerang.position = undefined;
       this.hero.boomerang.isReturning = false;
-      this.hero.showStats()
-      process.exit();
-      
     }
   }
 

@@ -22,9 +22,8 @@ class Hero {
         kills: this.stats.kills,
         moves: this.stats.moves,
       });
-      console.log('✅ Статистика сохранена');
     } catch (error) {
-      console.log('❌ Ошибка сохранения:', error.message);
+      throw error;
     }
   }
 
@@ -37,7 +36,14 @@ class Hero {
     this.position += 1;
     this.stats.moves++;
   }
-
+  moveDown() {
+    this.position += 143;
+    this.stats.moves++;
+  }
+  moveUp() {
+    this.position -= 143;
+    this.stats.moves++;
+  }
   attack() {
     this.boomerang.position = this.position + 1;
   }
@@ -57,7 +63,6 @@ class Hero {
 
   async die() {
     this.skin = '💀';
-    console.log('\n💀 YOU ARE DEAD!');
 
     try {
       await this.saveStats();
