@@ -16,6 +16,14 @@ class Hero {
     // Идём вправо.
     this.position += 1;
   }
+    moveDown() {
+    // Идём вправо.
+    this.position += 143;
+  }
+      moveUp() {
+    // Идём вправо.
+    this.position -= 143;
+  }
 
   attack() {
     // Атакуем.
