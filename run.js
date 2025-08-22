@@ -1,6 +1,7 @@
 // Основной файл.
 // Запускает игру.
-const Game = require('./src/Game');
+require('dotenv').config()
+const Game = require("./db/models/Game")
 
 // Инициализация игры с настройками.
 const game = new Game({
