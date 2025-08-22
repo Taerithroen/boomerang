@@ -10,7 +10,20 @@ class View {
     console.clear();
     console.log(track.join(''));
     console.log('\n\n');
-    console.log(`Created by "${yourTeamName}" with love`);
+    // console.log(`Created by "${yourTeamName}" with love`);
+
+
+console.log(
+        chalk.green(`
+
+███╗   ██╗ ██████╗ ████████╗     ██████╗  █████╗ ██████╗ 
+████╗  ██║██╔═══██╗╚══██╔══╝     ██╔══██╗██╔══██╗██╔══██╗
+██╔██╗ ██║██║   ██║   ██║        ██████╔╝███████║██║  ██║
+██║╚██╗██║██║   ██║   ██║        ██╔══██ ██╔══██║██║  ██║
+██║ ╚████║╚██████╔╝   ██║        ██║███  ██║  ██║██████╔╝
+╚═╝  ╚═══╝ ╚═════╝    ╚═╝        ╚═════╝ ╚═╝  ╚═╝╚═════╝ 
+          `)
+      );
     
   }
 }
