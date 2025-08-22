@@ -12,10 +12,10 @@ const keypress = require('keypress');
 function runInteractiveConsole(game) {
   const keyboard = {
     q: () => console.log('q'),
-    w: () => console.log('w'),
-    e: () => console.log('e'),
-    r: () => console.log('r'),
-    t: () => console.log('t'),
+    d: () => game.hero.moveRight(),
+    a: () => game.hero.moveLeft(),
+    s: () => game.hero.moveDown(),
+    w: () => game.hero.moveUp(),
     space: () => game.hero.attack(),
   };
   keypress(process.stdin);
