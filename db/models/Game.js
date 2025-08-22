@@ -32,6 +32,7 @@ class Game {
   }
 
   check() {
+
     if (this.hero.boomerang.position === this.trackLength - 1) {
       this.hero.boomerang.position = undefined;
       this.hero.boomerang.isReturning = false;
@@ -43,9 +44,13 @@ class Game {
 
     if (this.hero.boomerang.position === this.enemy.position) {
       this.enemy.die();
+      this.enemy = new Enemy();
       console.log('Enemy is dead!');
       this.hero.boomerang.isReturning = true;
       this.hero.enemyKilled();
+    }
+        if(this.hero.position < this.enemy.position){
+      this.enemy.moveLeft();
     }
 
     if (
