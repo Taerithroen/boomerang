@@ -2,9 +2,9 @@
 // Или можно не импортировать,
 // а передавать все нужные объекты прямо из run.js при инициализации new Game().
 
-const Hero = require('./game-models/Hero');
-const Enemy = require('./game-models/Enemy');
-const Boomerang = require('./game-models/Boomerang');
+const Hero = require('./Hero');
+const Enemy = require('./Enemy');
+const Boomerang = require('./Boomerang');
 const View = require('./View');
 const keyboard = require('./keyboard');
 
@@ -45,6 +45,7 @@ class Game {
       this.enemy.die();
       console.log('Enemy is dead!');
       this.hero.boomerang.isReturning = true;
+      this.hero.enemyKilled();
     }
 
     if (
@@ -67,6 +68,9 @@ class Game {
     ) {
       this.hero.boomerang.position = undefined;
       this.hero.boomerang.isReturning = false;
+      this.hero.showStats()
+      process.exit();
+      
     }
   }
 
@@ -76,7 +80,7 @@ class Game {
       this.check();
       this.regenerateTrack();
       this.view.render(this.track);
-    }, 200);
+    }, 100);
   }
 }
 

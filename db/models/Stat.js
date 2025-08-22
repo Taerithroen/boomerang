@@ -12,31 +12,34 @@ const sequelize = new Sequelize(
   },
 );
 
-const Stats = sequelize.define(
-  'Stats',
-  {
-    player: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    score: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
-    },
-    kills: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
-    },
-    moves: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
-    },
+const Stat = sequelize.define('Stat', {
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
   },
-  {
-    tableName: 'stats',
+  player: {
+    type: DataTypes.STRING,
+    allowNull: false,
   },
-);
+  score: {
+    type: DataTypes.INTEGER,
+    defaultValue: 0,
+  },
+  kills: {
+    type: DataTypes.INTEGER,
+    defaultValue: 0,
+  },
+  moves: {
+    type: DataTypes.INTEGER,
+    defaultValue: 0,
+  },
+}, {
+  tableName: 'stats',
+  timestamps: true, // добавим временные метки
+});
 
-Stats.sync();
+// Простая синхронизация с обработкой ошибок
+Stat.sync({ force: false }).catch(console.error);
 
-module.exports = Stats;
+module.exports = Stat;

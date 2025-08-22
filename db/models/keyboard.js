@@ -1,6 +1,4 @@
-// Умеешь работать с keypress? Попробуй разобраться в этом файле.
-// Вместо keypress можно использовать и стандартный readline.
-// Главное не используй всё вместе!
+
 
 const keypress = require('keypress');
 
@@ -12,12 +10,26 @@ const keypress = require('keypress');
 function runInteractiveConsole(game) {
   const keyboard = {
     q: () => console.log('q'),
-    d: () => game.hero.moveRight(),
-    a: () => game.hero.moveLeft(),
-    s: () => game.hero.moveDown(),
+    d: () => {
+      game.hero.moveRight(),
+    game.hero.saveStats();
+    },
+    a: () => {game.hero.moveLeft(),
+      game.hero.saveStats();
+    },
+    s: () => {game.hero.moveDown(),
+      game.hero.saveStats();
+    },
     w: () => game.hero.moveUp(),
-    space: () => game.hero.attack(),
-  };
+    
+    space: () => {game.hero.attack(),
+      game.hero.saveStats();
+    },
+    c: () => {
+      game.hero.showStats(); // ← показ статистики по нажатию C
+    }
+  }
+  
   keypress(process.stdin);
   process.stdin.on('keypress', (ch, key) => {
     if (key) {
