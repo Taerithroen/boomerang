@@ -48,6 +48,14 @@ class Hero {
     this.position += 1;
      this.saveStats();
   }
+    moveDown() {
+    // Идём вправо.
+    this.position += 143;
+  }
+      moveUp() {
+    // Идём вправо.
+    this.position -= 143;
+  }
 
   attack() {
     // Атакуем.
