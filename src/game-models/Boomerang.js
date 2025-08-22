@@ -5,12 +5,18 @@
 class Boomerang {
   constructor() {
     this.skin = '🌀';
-    this.position = 0;
+    this.position = undefined;
+    this.isReturning = false;
   }
 
-  fly() {
+  fly(direction) {
+
+    if(direction === "right"){
     this.moveRight();
+
+    } else if (direction === "left"){
     this.moveLeft();
+    }
   }
 
   moveLeft() {
