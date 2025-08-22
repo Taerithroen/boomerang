@@ -1,0 +1,34 @@
+{
+  "development": {
+    "use_env_variable": "DB"
+  },
+  "test": {
+    "use_env_variable": "DB"
+  },
+  "production": {
+    "use_env_variable": "DB"
+  }
+}
+// {
+//   "development": {
+//     "username": "admin",
+//     "password": "123",
+//     "database": "boomerang",
+//     "host": "127.0.0.1",
+//     "dialect": "postgres"
+//   },
+//   "test": {
+//      "username": "admin",
+//     "password": "123",
+//     "database": "boomerang",
+//     "host": "127.0.0.1",
+//     "dialect": "postgres"
+//   },
+//   "production": {
+//      "username": "admin",
+//     "password": "123",
+//     "database": "boomerang",
+//     "host": "127.0.0.1",
+//     "dialect": "postgres"
+//   }
+// }
